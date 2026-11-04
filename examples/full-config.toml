@@ -1,0 +1,17 @@
+# Renigma — a fully loaded M4 example.
+# Copy to ~/.config/renigma/config.toml to try it.
+
+theme = "dracula"
+reflector = "B-Thin"
+plugboard = ["AV", "BS", "CG", "DL", "FU", "HZ", "IN", "KM", "OW", "RX"]
+
+[rotors]
+count = 4
+order = ["Beta", "V", "VI", "VIII"]
+positions = ["K", "D", "O", "Z"]
+rings = ["B", "B", "B", "B"]
+
+[[custom_rotors]]
+name = "Sandbox"
+wiring = "ZYXWVUTSRQPONMLKJIHGFEDCBA"
+notches = "M"
