@@ -1,0 +1,16 @@
+[package]
+name = "renigma"
+version = "0.1.0"
+edition = "2024"
+description = "A terminal UI Enigma machine simulator"
+license = "MIT"
+
+[dependencies]
+ratatui = "0.30"
+serde = { version = "1", features = ["derive"] }
+toml = "1"
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true
