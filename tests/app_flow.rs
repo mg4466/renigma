@@ -190,3 +190,17 @@ fn quit_and_save_shortcuts() {
     ctrl(&mut app, 'q');
     assert!(app.should_quit);
 }
+
+#[test]
+fn stepping_rotor_flashes_in_lamp_colour() {
+    let mut app = app();
+    app.flash[2] = Some(std::time::Instant::now());
+    let mut terminal = Terminal::new(TestBackend::new(100, 30)).unwrap();
+    terminal.draw(|f| ui::draw(f, &mut app)).unwrap();
+    let lamp = Some(app.theme.lamp);
+    let cells = terminal.backend().buffer().content();
+    assert!(
+        cells.iter().any(|cell| cell.style().bg == lamp),
+        "stepped rotor should be painted with the lamp colour"
+    );
+}

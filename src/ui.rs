@@ -504,11 +504,11 @@ fn draw_machine_tab(frame: &mut Frame, app: &App, list_area: Rect, detail: Rect)
     }
     lines.push(Line::from(""));
     lines.push(Line::from(Span::styled(
-        "Historical rotors are I–VIII, Beta and Gamma.",
+        "Rotors I–VIII, Beta and Gamma.",
         Style::new().fg(t.dim),
     )));
     lines.push(Line::from(Span::styled(
-        "Beta/Gamma only fit the leftmost slot of an M4.",
+        "Beta/Gamma: M4 leftmost slot only.",
         Style::new().fg(t.dim),
     )));
     frame.render_widget(Paragraph::new(lines).style(base(t)), inner);

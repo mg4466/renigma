@@ -132,18 +132,20 @@ impl App {
 
     pub fn tick(&mut self) {
         if let Some((_, at)) = &self.toast
-            && at.elapsed() > TOAST_TIME {
-                self.toast = None;
-            }
+            && at.elapsed() > TOAST_TIME
+        {
+            self.toast = None;
+        }
         // Debounced autosave: at most one write every couple of seconds.
         if self.dirty && self.last_save.elapsed() > Duration::from_secs(2) {
             self.write_config();
         }
         for f in self.flash.iter_mut() {
             if let Some(at) = f
-                && at.elapsed() > FLASH_TIME {
-                    *f = None;
-                }
+                && at.elapsed() > FLASH_TIME
+            {
+                *f = None;
+            }
         }
     }
 
@@ -627,21 +629,23 @@ impl App {
 
     pub fn set_position_letter(&mut self, slot: usize, c: char) {
         if let Some(i) = letter_to_idx(c)
-            && let Some(rotor) = self.machine.rotors.get_mut(slot) {
-                rotor.position = i;
-                self.sync_positions();
-                self.start_positions = self.machine.positions();
-                self.dirty = true;
-            }
+            && let Some(rotor) = self.machine.rotors.get_mut(slot)
+        {
+            rotor.position = i;
+            self.sync_positions();
+            self.start_positions = self.machine.positions();
+            self.dirty = true;
+        }
     }
 
     pub fn set_ring_letter(&mut self, slot: usize, c: char) {
         if let Some(i) = letter_to_idx(c)
-            && slot < self.cfg.rotor_count() {
-                self.cfg.rotors.rings[slot] = idx_to_letter(i).to_string();
-                self.rebuild(false);
-                self.start_positions = self.machine.positions();
-            }
+            && slot < self.cfg.rotor_count()
+        {
+            self.cfg.rotors.rings[slot] = idx_to_letter(i).to_string();
+            self.rebuild(false);
+            self.start_positions = self.machine.positions();
+        }
     }
 
     fn select_reflector(&mut self, index: usize) {

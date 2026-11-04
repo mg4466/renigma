@@ -59,10 +59,9 @@ fn main() -> ExitCode {
     // First run: write a config file so the format is discoverable.
     let first_run = !path.exists();
     let mut app = App::new(cfg, path.clone());
-    if first_run
-        && let Err(e) = app.cfg.save(&path) {
-            eprintln!("renigma: could not create {}: {e}", path.display());
-        }
+    if first_run && let Err(e) = app.cfg.save(&path) {
+        eprintln!("renigma: could not create {}: {e}", path.display());
+    }
     if let Some(note) = notes.first() {
         app.toast(note.clone());
     }
