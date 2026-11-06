@@ -143,3 +143,8 @@ tests/          golden vectors and headless UI/flow tests
 
 The core has no dependency on ratatui, so it can be driven from other front
 ends (`renigma::enigma::Machine`).
+
+## License
+
+MIT — see [LICENSE](LICENSE). Copyright (c) 2026 Michael Graham.
+
